@@ -9,6 +9,10 @@ import models.User;
 import java.util.List;
 
 public class UserDAO implements IUser {
+    public static String getId() {
+        return "";
+    }
+
     @Override
     public void save(User user) {
         EntityManager em = EntityManagerAdmin.getInstance();
@@ -17,14 +21,12 @@ public class UserDAO implements IUser {
         em.getTransaction().commit();
     }
 
-    @Override
     public List<User> getUsers() {
         EntityManager em = EntityManagerAdmin.getInstance();
         List<User> user = em.createQuery("select c from User c", User.class).getResultList();
         return user;
     }
 
-    @Override
     public void update(User user) {
         EntityManager em = EntityManagerAdmin.getInstance();
         em.getTransaction().begin();
@@ -40,8 +42,28 @@ public class UserDAO implements IUser {
         em.getTransaction().commit();
     }
 
-    public Client findById(int id) {
+    @Override
+    public void setRuc(String s) {
+
+    }
+
+    @Override
+    public void setDepartment(String s) {
+
+    }
+
+    @Override
+    public void setCity(String s) {
+
+    }
+
+    public static Client findById(int id) {
         EntityManager em = EntityManagerAdmin.getInstance();
         return em.find(Client.class, id);
     }
+
+    public boolean isEmpty() {
+        return false;
+    }
+
 }

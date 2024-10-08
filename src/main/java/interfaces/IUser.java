@@ -12,4 +12,10 @@ public interface IUser {
     public void update (User useer);
 
     public void delete (User user);
+
+    void setRuc(String s);
+
+    void setDepartment(String s);
+
+    void setCity(String s);
 }
